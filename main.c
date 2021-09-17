@@ -2,7 +2,14 @@
 #include <stdlib.h>
 
 //Implemente as funcoes necessarias
+int iniciaVetor(int size){
+  int *vector = (int *) malloc(size*sizeof(int));
+  return &vector;
+}
 
+int uniao(vectorA, sizeA, vectorB, sizeB, sizeC){
+
+}
 
 //NAO ALTERE A MAIN
 int main(int argc, char * argv[]){
