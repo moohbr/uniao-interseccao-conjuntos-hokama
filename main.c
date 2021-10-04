@@ -7,7 +7,37 @@ int iniciaVetor(int size){
   return &vector;
 }
 
-int uniao(vectorA, sizeA, vectorB, sizeB, sizeC){
+int sort(*vector, sizeV){ // Algoritmo de ordenação
+  int j, last_element = 0;
+  for(int i = 0, i = sizeV, i++){
+    last_element = vector[i];
+    j = i - 1;
+    while((j >= 0) && (vector[j] > last_element)){
+      vector[j + 1] = vector[j];
+      j -= 1;
+    }
+    vector[j + 1] = last_element;
+  }
+}
+
+int interseccao(vectorA, sizeA, vectorB, sizeB, * sizeC){
+  int z = 0;
+  vectorAux = iniciaVetor(*sizeC);
+  for(int i = 0; i < sizeA, i++){
+    for (int k = 0; k < sizeB, k++){
+      if(vectorA[i] == vectorB[k]){
+        * sizeC += 1;
+        vectorAux = realloc(vectorAux, *sizeC);
+        vectorAux[z] = vectorA[i];
+        z ++;
+      }
+    }
+  }
+  sort(&vectorAux, sizeC);
+  return vectorAux;
+}
+
+int uniao(vectorA, sizeA, vectorB, sizeB, * sizeC){
 
 }
 
