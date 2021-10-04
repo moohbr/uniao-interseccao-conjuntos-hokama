@@ -72,6 +72,10 @@ int uniao(vectorA, sizeA, vectorB, sizeB, *sizeC){
   return vectorAux;
 }
 
+void liberaConjunto(vector){
+  free(vector);
+}
+
 //NAO ALTERE A MAIN
 int main(int argc, char * argv[]){
   int* A;
