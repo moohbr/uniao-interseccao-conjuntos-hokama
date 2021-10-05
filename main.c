@@ -3,10 +3,10 @@
 
 int iniciaVetor(int size){
   int *vector = (int *) malloc(size*sizeof(int));
-  return &vector;
+  return *vector;
 }
 
-void sort(*vector, sizeV){
+void sort(int *vector, int sizeV){
   int j, last_element = 0;
   for(int i = 0, i < sizeV, i++){
     last_element = vector[i];
@@ -19,7 +19,7 @@ void sort(*vector, sizeV){
   }
 }
 
-int interseccao(vectorA, sizeA, vectorB, sizeB, *sizeC){
+int interseccao(int vectorA, int sizeA, int vectorB, int sizeB, int *sizeC){
   int z = 0;
   vectorAux = iniciaVetor(*sizeC);
   for(int i = 0; i < sizeA, i++){
@@ -36,7 +36,7 @@ int interseccao(vectorA, sizeA, vectorB, sizeB, *sizeC){
   return vectorAux;
 }
 
-void remove_duplicated_elements(*vectorA, *sizeA){
+void remove_duplicated_elements(int *vectorA, int *sizeA){
   for(i = 0; i < sizeA; i++){
     for(j = i + 1; j < sizeA; ){
       if( vetorA[j] == vetorA[i] ){
@@ -52,7 +52,7 @@ void remove_duplicated_elements(*vectorA, *sizeA){
   }
 }
 
-int uniao(vectorA, sizeA, vectorB, sizeB, *sizeC){
+int uniao(int vectorA, int sizeA, int vectorB, int sizeB, int* sizeC){
   vectorA = sort(vectorA, sizeA);
   vectorB = sort(vectorB, sizeB);
   remove_duplicated_elements(&vectorA, &sizeA);
@@ -71,7 +71,7 @@ int uniao(vectorA, sizeA, vectorB, sizeB, *sizeC){
   return vectorAux;
 }
 
-void liberaConjunto(*vector){
+void liberaConjunto(int* vector){
   free(*vector);
 }
 
