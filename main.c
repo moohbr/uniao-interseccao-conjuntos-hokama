@@ -30,7 +30,6 @@ void sort(int* vector, int sizeV){
   }
 }
 
-
 void removeDuplicatedElements(int *vector, int *size){
   sort(vector, *size);
 
@@ -47,14 +46,6 @@ void removeDuplicatedElements(int *vector, int *size){
     }
   }
 }
-
-/* void tryRealloc(int* vector, int size){
-  long* errorFlag;
-  do{
-    errorFlag = realloc(*vector, size  * sizeof(int));
-  }
-  while (errorFlag == NULL);
-} */
 
 int* interseccao(int* vectorA, int sizeA, int* vectorB, int sizeB, int *sizeC){
   int z = 0;
