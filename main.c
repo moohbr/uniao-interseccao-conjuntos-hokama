@@ -48,28 +48,29 @@ void removeDuplicatedElements(int *vector, int *size){
   }
 }
 
+/* void tryRealloc(int* vector, int size){
+  long* errorFlag;
+  do{
+    errorFlag = realloc(*vector, size  * sizeof(int));
+  }
+  while (errorFlag == NULL);
+} */
+
 int* interseccao(int* vectorA, int sizeA, int* vectorB, int sizeB, int *sizeC){
   int z = 0;
+  (*sizeC) = sizeA + sizeB;
   int* vectorAux = iniciaVetor(*sizeC);
   for(int i = 0; i < sizeA; i++){
     for (int k = 0; k < sizeB; k++){
       if(vectorA[i] == vectorB[k]){
-        *sizeC += 1;
-
-        realloc(vectorAux, *sizeC);
-
         vectorAux[z] = vectorB[k];
-
         z ++;
+        break;
       }
     }
   }
+  (*sizeC) = z;
   sort(vectorAux, *sizeC);
-  for (int i = 1; i < (*sizeC); i++){
-    vectorAux[i - 1]=vectorAux[i];
-  }
-  (*sizeC)-=1;
-  realloc(vectorAux,*sizeC);
   return vectorAux;
 }
 
