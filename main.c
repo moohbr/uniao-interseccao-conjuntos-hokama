@@ -1,78 +1,101 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int iniciaVetor(int size){
-  int *vector = (int *) malloc(size*sizeof(int));
-  return *vector;
+int* iniciaVetor(int size){
+  int* vector = (int *) malloc(size * sizeof(int));
+
+  return vector;
 }
 
-void sort(int *vector, int sizeV){
+void imprimeConjunto(int* vector, int size){
+	for(int i = 0; i < size; i++){
+		printf("%d ", vector[i]);
+	}
+}
+
+void sort(int* vector, int sizeV){
   int j, last_element = 0;
-  for(int i = 0, i < sizeV, i++){
+
+  for(int i = 0; i < sizeV; i++){
     last_element = vector[i];
     j = i - 1;
+
     while((j >= 0) && (vector[j] > last_element)){
       vector[j + 1] = vector[j];
       j -= 1;
     }
+
     vector[j + 1] = last_element;
   }
 }
 
-int interseccao(int vectorA, int sizeA, int vectorB, int sizeB, int *sizeC){
+int* interseccao(int* vectorA, int sizeA, int* vectorB, int sizeB, int *sizeC){
   int z = 0;
-  vectorAux = iniciaVetor(*sizeC);
-  for(int i = 0; i < sizeA, i++){
-    for (int k = 0; k < sizeB, k++){
+  int* vectorAux = iniciaVetor(*sizeC);
+
+  for(int i = 0; i < sizeA; i++){
+    for (int k = 0; k < sizeB; k++){
       if(vectorA[i] == vectorB[k]){
-        * sizeC += 1;
-        vectorAux = realloc(vectorAux, *sizeC);
+        *sizeC += 1;
+
+        realloc(vectorAux, *sizeC);
+
         vectorAux[z] = vectorA[i];
+        
         z ++;
       }
     }
   }
-  sort(&vectorAux, sizeC);
+  
+  sort(vectorAux, *sizeC);
+
   return vectorAux;
 }
 
-void remove_duplicated_elements(int *vectorA, int *sizeA){
-  for(i = 0; i < sizeA; i++){
-    for(j = i + 1; j < sizeA; ){
-      if( vetorA[j] == vetorA[i] ){
-        for( k = j; k < sizeA; k++ ){
-          vetorA[k] = vetorA[k + 1]
-          sizeA--;
+void removeDuplicatedElements(int *vector, int *size){
+  sort(vector, *size);
+
+  for(int i = 0; i < *size; i++){
+    for(int j = i + 1; j < *size; j++){
+      if(vector[j] == vector[i]){
+        for(int k = j; k < *size; k++){
+          vector[k] = vector[k + 1];
         }
-      else{
-        j++;
-      }
+
+        (*size)--;
+        j--;
       }
     }
   }
 }
 
-int uniao(int vectorA, int sizeA, int vectorB, int sizeB, int* sizeC){
-  vectorA = sort(vectorA, sizeA);
-  vectorB = sort(vectorB, sizeB);
-  remove_duplicated_elements(&vectorA, &sizeA);
-  remove_duplicated_elements(&vectorB, &sizeB);
+int* uniao(int* vectorA, int sizeA, int* vectorB, int sizeB, int* sizeC){
+  removeDuplicatedElements(vectorA, &sizeA);
+  removeDuplicatedElements(vectorB, &sizeB);
+
   int sizeAux = sizeA + sizeB;
-  vectorAux =  iniciaVetor(sizeAux);
-  int i = 0;
-  for(i = 0, i < sizeA, i++){
+
+  int* vectorAux = iniciaVetor(sizeAux);
+  
+  int i;
+
+  for(i = 0; i < sizeA; i++){
     vectorAux[i] = vectorA[i];
   }
-  for(k = 0, k < sizeB, k++){
-    vectorAux[i + 1] = vectorB[k];
-    i++;
+
+  for(int j = 0; j < sizeB; j++){
+    vectorAux[i + j] = vectorB[j];
   }
-  sort(vectorAux, sizeC);
+
+  removeDuplicatedElements(vectorAux, &sizeAux);
+
+  *sizeC = sizeAux;
+
   return vectorAux;
 }
 
 void liberaConjunto(int* vector){
-  free(*vector);
+  free(vector);
 }
 
 int main(int argc, char * argv[]){
@@ -82,16 +105,20 @@ int main(int argc, char * argv[]){
   int* D;
   int nA, nB, nC, nD, aux;
   
+  printf("Digite o tamanho");
   scanf("%d", &nA);
   A = iniciaVetor(nA);
   for(int i = 0; i < nA; i++){
+  	printf("Digite o valor");
     scanf("%d", &aux);
     A[i] = aux;
   }
   
+  printf("Digite o tamanho");
   scanf("%d", &nB);
   B = iniciaVetor(nB);
   for(int i = 0; i < nB; i++){
+  	printf("Digite o valor");
     scanf("%d", &aux);
     B[i] = aux;
   }
