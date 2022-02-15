@@ -1,4 +1,4 @@
-# uniao-interseccao-conjuntos-hokama
+# union-intersection-sets-hokama
 
 Input (sizeA, elementsA, sizeB, elementsB)
 Output (union and intersection)
